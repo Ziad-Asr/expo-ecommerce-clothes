@@ -103,12 +103,7 @@ export default function ProfileScreen() {
                 <Text style={styles.userEmail}>john.doe@example.com</Text>
                 <Text style={styles.memberSince}>Member since 2023</Text>
               </View>
-              <TouchableOpacity style={styles.editButton}>
-                <TouchableOpacity
-      onPress={() => handleMenuPress('Edit Profile')}
-    >
-                <Text style={styles.editButtonText}>Edit</Text>
-                  </TouchableOpacity>
+              
               </TouchableOpacity>
             </View>
           </View>
