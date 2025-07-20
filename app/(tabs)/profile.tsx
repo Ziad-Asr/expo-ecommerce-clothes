@@ -26,6 +26,7 @@ import { useRouter } from 'expo-router';
 const menuItems = [
   { icon: ShoppingBag, label: 'My Orders', color: '#FFD700' },
   { icon: Heart, label: 'Wishlist', color: '#FF6B6B' },
+  { icon: User, label: 'Edit Profile', color: '#4CAF50' },
   { icon: Bell, label: 'Notifications', color: '#FFA726' },
   { icon: Settings, label: 'Terms & Conditions', color: '#9C27B0' },
 ];
@@ -40,6 +41,9 @@ export default function ProfileScreen() {
         break;
       case 'Wishlist':
         router.push('/wishlist');
+        break;
+      case 'Edit Profile':
+        router.push('/profile-edit');
         break;
       case 'Notifications':
         router.push('/notifications');
