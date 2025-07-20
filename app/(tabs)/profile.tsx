@@ -104,7 +104,13 @@ export default function ProfileScreen() {
                 <Text style={styles.memberSince}>Member since 2023</Text>
               </View>
               <TouchableOpacity style={styles.editButton}>
+                <TouchableOpacity
+      style={styles.menuItem}
+      activeOpacity={0.7}
+      onPress={() => handleMenuPress(item.label)}
+    >
                 <Text style={styles.editButtonText}>Edit</Text>
+                  </TouchableOpacity>
               </TouchableOpacity>
             </View>
           </View>
