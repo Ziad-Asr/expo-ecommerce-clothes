@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="1024" height="1024" viewBox="0 0 1024 1024" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background Circle -->
+  <circle cx="512" cy="512" r="512" fill="url(#gradient)"/>
+  
+  <!-- Main Icon - Elegant Hanger with Crown -->
+  <g transform="translate(512, 512)">
+    <!-- Crown -->
+    <path d="M-80 -200 L-60 -160 L-40 -180 L-20 -160 L0 -180 L20 -160 L40 -180 L60 -160 L80 -200 L80 -140 L-80 -140 Z" 
+          fill="#FFD700" stroke="#FFA500" stroke-width="2"/>
+    
+    <!-- Crown Jewels -->
+    <circle cx="-40" cy="-170" r="4" fill="#FF6B6B"/>
+    <circle cx="0" cy="-170" r="4" fill="#4ECDC4"/>
+    <circle cx="40" cy="-170" r="4" fill="#FF6B6B"/>
+    
+    <!-- Hanger Hook -->
+    <path d="M-8 -140 Q-8 -120 8 -120 Q8 -140 8 -140" 
+          fill="none" stroke="#FFD700" stroke-width="8" stroke-linecap="round"/>
+    
+    <!-- Hanger Body -->
+    <path d="M-120 -80 Q-120 -100 -100 -100 L100 -100 Q120 -100 120 -80 Q120 -60 100 -60 L-100 -60 Q-120 -60 -120 -80 Z" 
+          fill="#FFFFFF" stroke="#E0E0E0" stroke-width="3"/>
+    
+    <!-- Elegant Clothing Silhouette -->
+    <!-- Dress/Shirt Shape -->
+    <path d="M-80 -60 L-80 20 Q-80 40 -60 60 L-40 80 Q-20 100 0 100 Q20 100 40 80 L60 60 Q80 40 80 20 L80 -60" 
+          fill="url(#clothingGradient)" stroke="#333333" stroke-width="2" opacity="0.9"/>
+    
+    <!-- Elegant Details -->
+    <path d="M-60 -40 L60 -40" stroke="#FFD700" stroke-width="2" opacity="0.7"/>
+    <path d="M-40 -20 L40 -20" stroke="#FFD700" stroke-width="1.5" opacity="0.5"/>
+    <path d="M-30 0 L30 0" stroke="#FFD700" stroke-width="1" opacity="0.3"/>
+    
+    <!-- Brand Initial "E" -->
+    <text x="0" y="140" font-family="serif" font-size="120" font-weight="bold" 
+          text-anchor="middle" fill="#FFD700" stroke="#FFA500" stroke-width="2">E</text>
+  </g>
+  
+  <!-- Gradient Definitions -->
+  <defs>
+    <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#000000;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#1a1a1a;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#000000;stop-opacity:1" />
+    </linearGradient>
+    
+    <linearGradient id="clothingGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#333333;stop-opacity:0.8" />
+      <stop offset="50%" style="stop-color:#666666;stop-opacity:0.6" />
+      <stop offset="100%" style="stop-color:#333333;stop-opacity:0.8" />
+    </linearGradient>
+  </defs>
+</svg>
