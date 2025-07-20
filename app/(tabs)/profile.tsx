@@ -105,9 +105,7 @@ export default function ProfileScreen() {
               </View>
               <TouchableOpacity style={styles.editButton}>
                 <TouchableOpacity
-      style={styles.menuItem}
-      activeOpacity={0.7}
-      onPress={() => handleMenuPress(item.label)}
+      onPress={() => handleMenuPress('Edit Profile')}
     >
                 <Text style={styles.editButtonText}>Edit</Text>
                   </TouchableOpacity>
