@@ -8,12 +8,10 @@ import {
   TextInput,
   Switch,
   Alert,
-  Image,
 } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { useRouter } from 'expo-router';
-import * as ImagePicker from 'expo-image-picker';
 import {
   ArrowLeft,
   User,
@@ -26,8 +24,6 @@ import {
   Eye,
   EyeOff,
   Save,
-  Camera,
-  Image as ImageIcon,
 } from 'lucide-react-native';
 
 interface UserProfile {
@@ -63,7 +59,6 @@ export default function ProfileEditScreen() {
   const router = useRouter();
   const [showPassword, setShowPassword] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
-  const [profileImage, setProfileImage] = useState<string | null>(null);
 
   const [profile, setProfile] = useState<UserProfile>({
     firstName: 'John',
@@ -161,55 +156,6 @@ export default function ProfileEditScreen() {
     setPasswords({ current: '', new: '', confirm: '' });
   };
 
-  const pickImage = async () => {
-    const { status } = await ImagePicker.requestMediaLibraryPermissionsAsync();
-    if (status !== 'granted') {
-      Alert.alert('Permission needed', 'Sorry, we need camera roll permissions to make this work!');
-      return;
-    }
-
-    const result = await ImagePicker.launchImageLibraryAsync({
-      mediaTypes: ImagePicker.MediaTypeOptions.Images,
-      allowsEditing: true,
-      aspect: [1, 1],
-      quality: 0.8,
-    });
-
-    if (!result.canceled) {
-      setProfileImage(result.assets[0].uri);
-    }
-  };
-
-  const takePhoto = async () => {
-    const { status } = await ImagePicker.requestCameraPermissionsAsync();
-    if (status !== 'granted') {
-      Alert.alert('Permission needed', 'Sorry, we need camera permissions to make this work!');
-      return;
-    }
-
-    const result = await ImagePicker.launchCameraAsync({
-      allowsEditing: true,
-      aspect: [1, 1],
-      quality: 0.8,
-    });
-
-    if (!result.canceled) {
-      setProfileImage(result.assets[0].uri);
-    }
-  };
-
-  const showImagePicker = () => {
-    Alert.alert(
-      'Select Profile Picture',
-      'Choose how you want to select your profile picture',
-      [
-        { text: 'Camera', onPress: takePhoto },
-        { text: 'Gallery', onPress: pickImage },
-        { text: 'Cancel', style: 'cancel' },
-      ]
-    );
-  };
-
   const InputField = ({ 
     label, 
     value, 
@@ -302,32 +248,6 @@ export default function ProfileEditScreen() {
           style={styles.content}
           showsVerticalScrollIndicator={false}
         >
-          {/* Profile Picture Section */}
-          <View style={styles.profilePictureSection}>
-            <Text style={styles.sectionTitle}>Profile Picture</Text>
-            <View style={styles.imagePickerContainer}>
-              <TouchableOpacity
-                style={styles.imagePickerButton}
-                onPress={showImagePicker}
-              >
-                {profileImage ? (
-                  <Image source={{ uri: profileImage }} style={styles.profileImagePreview} />
-                ) : (
-                  <LinearGradient
-                    colors={['#FFD700', '#FFA500']}
-                    style={styles.defaultImageContainer}
-                  >
-                    <User size={60} color="#000000" />
-                  </LinearGradient>
-                )}
-                <View style={styles.cameraIconContainer}>
-                  <Camera size={20} color="#000000" />
-                </View>
-              </TouchableOpacity>
-              <Text style={styles.imagePickerText}>Tap to change profile picture</Text>
-            </View>
-          </View>
-
           {/* Personal Information */}
           <View style={styles.section}>
             <Text style={styles.sectionTitle}>Personal Information</Text>
@@ -786,51 +706,5 @@ const styles = StyleSheet.create({
   },
   disabledText: {
     color: '#666666',
-  },
-  profilePictureSection: {
-    marginBottom: 30,
-    alignItems: 'center',
-  },
-  imagePickerContainer: {
-    alignItems: 'center',
-  },
-  imagePickerButton: {
-    position: 'relative',
-    marginBottom: 12,
-  },
-  profileImagePreview: {
-    width: 120,
-    height: 120,
-    borderRadius: 60,
-    borderWidth: 4,
-    borderColor: '#FFD700',
-  },
-  defaultImageContainer: {
-    width: 120,
-    height: 120,
-    borderRadius: 60,
-    justifyContent: 'center',
-    alignItems: 'center',
-    borderWidth: 4,
-    borderColor: '#FFD700',
-  },
-  cameraIconContainer: {
-    position: 'absolute',
-    bottom: 0,
-    right: 0,
-    backgroundColor: '#FFD700',
-    borderRadius: 18,
-    width: 36,
-    height: 36,
-    justifyContent: 'center',
-    alignItems: 'center',
-    borderWidth: 3,
-    borderColor: '#000000',
-  },
-  imagePickerText: {
-    fontSize: 14,
-    color: '#888888',
-    fontFamily: 'Inter-Regular',
-    textAlign: 'center',
   },
 });
