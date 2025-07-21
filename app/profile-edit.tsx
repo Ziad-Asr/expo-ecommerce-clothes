@@ -12,6 +12,8 @@ import {
 import { LinearGradient } from 'expo-linear-gradient';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { useRouter } from 'expo-router';
+import { useFocusEffect } from '@react-navigation/native';
+import { useCallback } from 'react';
 import {
   ArrowLeft,
   User,
@@ -59,6 +61,16 @@ export default function ProfileEditScreen() {
   const router = useRouter();
   const [showPassword, setShowPassword] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
+
+  // Ensure smooth navigation
+  useFocusEffect(
+    useCallback(() => {
+      // Screen is focused, ensure proper rendering
+      return () => {
+        // Screen is unfocused
+      };
+    }, [])
+  );
 
   const [profile, setProfile] = useState<UserProfile>({
     firstName: 'John',

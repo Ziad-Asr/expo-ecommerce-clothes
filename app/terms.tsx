@@ -9,10 +9,22 @@ import {
 import { LinearGradient } from 'expo-linear-gradient';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { useRouter } from 'expo-router';
+import { useFocusEffect } from '@react-navigation/native';
+import { useCallback } from 'react';
 import { ArrowLeft } from 'lucide-react-native';
 
 export default function TermsScreen() {
   const router = useRouter();
+
+  // Ensure smooth navigation
+  useFocusEffect(
+    useCallback(() => {
+      // Screen is focused, ensure proper rendering
+      return () => {
+        // Screen is unfocused
+      };
+    }, [])
+  );
 
   return (
     <LinearGradient

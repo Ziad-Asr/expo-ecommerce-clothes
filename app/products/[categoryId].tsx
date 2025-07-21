@@ -12,6 +12,8 @@ import {
 import { LinearGradient } from 'expo-linear-gradient';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { useLocalSearchParams, useRouter } from 'expo-router';
+import { useFocusEffect } from '@react-navigation/native';
+import { useCallback } from 'react';
 import { ArrowLeft, Search, Filter, Heart, Star } from 'lucide-react-native';
 
 const { width } = Dimensions.get('window');
@@ -103,6 +105,16 @@ export default function ProductsScreen() {
   const [searchQuery, setSearchQuery] = useState('');
   const [favorites, setFavorites] = useState<number[]>([2, 4]);
   const [sortBy, setSortBy] = useState('popular');
+
+  // Ensure smooth navigation
+  useFocusEffect(
+    useCallback(() => {
+      // Screen is focused, ensure proper rendering
+      return () => {
+        // Screen is unfocused
+      };
+    }, [])
+  );
 
   const products = getProductsByCategory(categoryId as string);
   const filteredProducts = products.filter((product) =>

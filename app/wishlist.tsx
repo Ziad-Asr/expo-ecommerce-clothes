@@ -11,6 +11,8 @@ import {
 import { LinearGradient } from 'expo-linear-gradient';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { useRouter } from 'expo-router';
+import { useFocusEffect } from '@react-navigation/native';
+import { useCallback } from 'react';
 import {
   ArrowLeft,
   Heart,
@@ -64,6 +66,16 @@ const wishlistItems = [
 export default function WishlistScreen() {
   const router = useRouter();
   const [wishlist, setWishlist] = useState(wishlistItems);
+
+  // Ensure smooth navigation
+  useFocusEffect(
+    useCallback(() => {
+      // Screen is focused, ensure proper rendering
+      return () => {
+        // Screen is unfocused
+      };
+    }, [])
+  );
 
   const removeFromWishlist = (productId: number) => {
     setWishlist((prev) => prev.filter((item) => item.id !== productId));

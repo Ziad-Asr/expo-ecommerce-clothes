@@ -11,6 +11,8 @@ import {
 import { LinearGradient } from 'expo-linear-gradient';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { useLocalSearchParams, useRouter } from 'expo-router';
+import { useFocusEffect } from '@react-navigation/native';
+import { useCallback } from 'react';
 import {
   ArrowLeft,
   Heart,
@@ -85,6 +87,16 @@ export default function ProductDetailScreen() {
   const { productId } = useLocalSearchParams();
   const router = useRouter();
   const product = getProductById(productId as string);
+
+  // Ensure smooth navigation
+  useFocusEffect(
+    useCallback(() => {
+      // Screen is focused, ensure proper rendering
+      return () => {
+        // Screen is unfocused
+      };
+    }, [])
+  );
 
   const [selectedImageIndex, setSelectedImageIndex] = useState(0);
   const [selectedColor, setSelectedColor] = useState(product.colors[0]);

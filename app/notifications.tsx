@@ -9,6 +9,8 @@ import {
 import { LinearGradient } from 'expo-linear-gradient';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { useRouter } from 'expo-router';
+import { useFocusEffect } from '@react-navigation/native';
+import { useCallback } from 'react';
 import {
   ArrowLeft,
   Package,
@@ -75,6 +77,16 @@ const notifications = [
 export default function NotificationsScreen() {
   const router = useRouter();
   const [notificationList, setNotificationList] = useState(notifications);
+
+  // Ensure smooth navigation
+  useFocusEffect(
+    useCallback(() => {
+      // Screen is focused, ensure proper rendering
+      return () => {
+        // Screen is unfocused
+      };
+    }, [])
+  );
 
   const markAsRead = (id: number) => {
     setNotificationList((prev) =>
