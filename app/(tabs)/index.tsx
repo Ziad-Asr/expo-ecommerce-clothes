@@ -235,7 +235,10 @@ export default function HomeScreen() {
       colors={['#000000', '#1a1a1a', '#000000']}
       style={styles.container}
     >
-      <SafeAreaView style={styles.safeArea} edges={['top', 'bottom', 'left', 'right']}>
+      <SafeAreaView
+        style={styles.safeArea}
+        edges={['top', 'bottom', 'left', 'right']}
+      >
         <ScrollView showsVerticalScrollIndicator={false}>
           {/* Search Bar */}
           <View style={styles.searchContainer}>
