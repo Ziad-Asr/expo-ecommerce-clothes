@@ -15,9 +15,10 @@ export default function TabLayout() {
     <Tabs
       screenOptions={{
         headerShown: false,
-        lazy: false,
-        animationEnabled: true,
+        lazy: true,
+        animationEnabled: false,
         swipeEnabled: false,
+        unmountOnBlur: false,
         tabBarStyle: {
           backgroundColor: '#000000',
           borderTopColor: '#333333',
@@ -26,6 +27,10 @@ export default function TabLayout() {
           paddingTop: 10,
           elevation: 0,
           shadowOpacity: 0,
+          position: 'absolute',
+        },
+        sceneStyle: {
+          backgroundColor: '#000000',
         },
         tabBarActiveTintColor: '#FFD700',
         tabBarInactiveTintColor: '#888888',
@@ -47,7 +52,7 @@ export default function TabLayout() {
         options={{
           title: 'Home',
           tabBarIcon: ({ size, color }) => <Home size={size} color={color} />,
-          lazy: false,
+          lazy: true,
         }}
       />
       <Tabs.Screen
@@ -57,7 +62,7 @@ export default function TabLayout() {
           tabBarIcon: ({ size, color }) => (
             <Package size={size} color={color} />
           ),
-          lazy: false,
+          lazy: true,
         }}
       />
       <Tabs.Screen
@@ -65,7 +70,7 @@ export default function TabLayout() {
         options={{
           title: 'Categories',
           tabBarIcon: ({ size, color }) => <Search size={size} color={color} />,
-          lazy: false,
+          lazy: true,
         }}
       />
       <Tabs.Screen
@@ -75,7 +80,7 @@ export default function TabLayout() {
           tabBarIcon: ({ size, color }) => (
             <ShoppingBag size={size} color={color} />
           ),
-          lazy: false,
+          lazy: true,
         }}
       />
       <Tabs.Screen
@@ -83,7 +88,7 @@ export default function TabLayout() {
         options={{
           title: 'Profile',
           tabBarIcon: ({ size, color }) => <User size={size} color={color} />,
-          lazy: false,
+          lazy: true,
         }}
       />
     </Tabs>

@@ -7,11 +7,10 @@ import {
   TouchableOpacity,
   Image,
 } from 'react-native';
-import { LinearGradient } from 'expo-linear-gradient';
-import { SafeAreaView } from 'react-native-safe-area-context';
 import { useRouter } from 'expo-router';
 import { useFocusEffect } from '@react-navigation/native';
 import { useCallback } from 'react';
+import ScreenWrapper from '@/components/ScreenWrapper';
 import {
   ArrowLeft,
   Package,
@@ -158,14 +157,7 @@ export default function OrdersScreen() {
   );
 
   return (
-    <LinearGradient
-      colors={['#000000', '#1a1a1a', '#000000']}
-      style={styles.container}
-    >
-      <SafeAreaView
-        style={styles.safeArea}
-        edges={['top', 'bottom', 'left', 'right']}
-      >
+    <ScreenWrapper>
         {/* Header */}
         <View style={styles.header}>
           <TouchableOpacity
@@ -187,18 +179,11 @@ export default function OrdersScreen() {
             <OrderCard key={order.id} order={order} />
           ))}
         </ScrollView>
-      </SafeAreaView>
-    </LinearGradient>
+    </ScreenWrapper>
   );
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-  },
-  safeArea: {
-    flex: 1,
-  },
   header: {
     flexDirection: 'row',
     alignItems: 'center',

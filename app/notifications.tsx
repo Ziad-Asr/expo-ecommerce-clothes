@@ -6,11 +6,10 @@ import {
   ScrollView,
   TouchableOpacity,
 } from 'react-native';
-import { LinearGradient } from 'expo-linear-gradient';
-import { SafeAreaView } from 'react-native-safe-area-context';
 import { useRouter } from 'expo-router';
 import { useFocusEffect } from '@react-navigation/native';
 import { useCallback } from 'react';
+import ScreenWrapper from '@/components/ScreenWrapper';
 import {
   ArrowLeft,
   Package,
@@ -143,14 +142,7 @@ export default function NotificationsScreen() {
 
   if (notificationList.length === 0) {
     return (
-      <LinearGradient
-        colors={['#000000', '#1a1a1a', '#000000']}
-        style={styles.container}
-      >
-        <SafeAreaView
-          style={styles.safeArea}
-          edges={['top', 'bottom', 'left', 'right']}
-        >
+      <ScreenWrapper>
           <View style={styles.header}>
             <TouchableOpacity
               style={styles.backButton}
@@ -166,20 +158,12 @@ export default function NotificationsScreen() {
             <Text style={styles.emptyTitle}>No notifications</Text>
             <Text style={styles.emptySubtitle}>You're all caught up!</Text>
           </View>
-        </SafeAreaView>
-      </LinearGradient>
+      </ScreenWrapper>
     );
   }
 
   return (
-    <LinearGradient
-      colors={['#000000', '#1a1a1a', '#000000']}
-      style={styles.container}
-    >
-      <SafeAreaView
-        style={styles.safeArea}
-        edges={['top', 'bottom', 'left', 'right']}
-      >
+    <ScreenWrapper>
         {/* Header */}
         <View style={styles.header}>
           <TouchableOpacity
@@ -220,18 +204,11 @@ export default function NotificationsScreen() {
             />
           ))}
         </ScrollView>
-      </SafeAreaView>
-    </LinearGradient>
+    </ScreenWrapper>
   );
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-  },
-  safeArea: {
-    flex: 1,
-  },
   header: {
     flexDirection: 'row',
     alignItems: 'center',
