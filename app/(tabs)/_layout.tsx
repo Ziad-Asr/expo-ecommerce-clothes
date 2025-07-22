@@ -15,7 +15,7 @@ export default function TabLayout() {
     <Tabs
       screenOptions={{
         headerShown: false,
-        lazy: false,
+        lazy: true,
         animationEnabled: false,
         swipeEnabled: false,
         unmountOnBlur: false,
@@ -52,7 +52,7 @@ export default function TabLayout() {
         options={{
           title: 'Home',
           tabBarIcon: ({ size, color }) => <Home size={size} color={color} />,
-          lazy: false,
+          lazy: true,
         }}
       />
       <Tabs.Screen
@@ -62,7 +62,7 @@ export default function TabLayout() {
           tabBarIcon: ({ size, color }) => (
             <Package size={size} color={color} />
           ),
-          lazy: false,
+          lazy: true,
         }}
       />
       <Tabs.Screen
@@ -70,7 +70,7 @@ export default function TabLayout() {
         options={{
           title: 'Categories',
           tabBarIcon: ({ size, color }) => <Search size={size} color={color} />,
-          lazy: false,
+          lazy: true,
         }}
       />
       <Tabs.Screen
@@ -80,7 +80,7 @@ export default function TabLayout() {
           tabBarIcon: ({ size, color }) => (
             <ShoppingBag size={size} color={color} />
           ),
-          lazy: false,
+          lazy: true,
         }}
       />
       <Tabs.Screen
@@ -88,7 +88,7 @@ export default function TabLayout() {
         options={{
           title: 'Profile',
           tabBarIcon: ({ size, color }) => <User size={size} color={color} />,
-          lazy: false,
+          lazy: true,
         }}
       />
     </Tabs>

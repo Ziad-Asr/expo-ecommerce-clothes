@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import { Stack } from 'expo-router';
 import { StatusBar } from 'expo-status-bar';
-import { Platform, View } from 'react-native';
+import { Platform } from 'react-native';
 import { useFrameworkReady } from '@/hooks/useFrameworkReady';
 import {
   useFonts,
@@ -30,9 +30,7 @@ export default function RootLayout() {
   }, [fontsLoaded]);
 
   if (!fontsLoaded) {
-    return (
-      <View style={{ flex: 1, backgroundColor: '#000000' }} />
-    );
+    return null;
   }
 
   return (
@@ -40,11 +38,11 @@ export default function RootLayout() {
       <Stack 
         screenOptions={{ 
           headerShown: false,
-          animation: 'none',
-          animationDuration: 0,
-          gestureEnabled: false,
+          animation: Platform.OS === 'ios' ? 'slide_from_right' : 'slide_from_bottom',
+          animationDuration: 250,
+          gestureEnabled: true,
+          gestureDirection: 'horizontal',
           contentStyle: { backgroundColor: '#000000' },
-          cardStyle: { backgroundColor: '#000000' },
         }}
       >
         <Stack.Screen 
@@ -52,91 +50,89 @@ export default function RootLayout() {
           options={{ 
             headerShown: false,
             animation: 'none',
-            animationDuration: 0,
             contentStyle: { backgroundColor: '#000000' },
-            cardStyle: { backgroundColor: '#000000' },
           }} 
         />
-        <Stack.Screen 
-          name="+not-found"
-          options={{
-            animation: 'none',
-            contentStyle: { backgroundColor: '#000000' },
-            cardStyle: { backgroundColor: '#000000' },
-          }}
-        />
+        <Stack.Screen name="+not-found" />
         <Stack.Screen 
           name="notifications" 
           options={{ 
-            animation: 'none',
-            animationDuration: 0,
-            gestureEnabled: false,
+            presentation: 'modal',
+            animation: Platform.OS === 'ios' ? 'slide_from_right' : 'slide_from_bottom',
+            animationDuration: 250,
+            gestureEnabled: true,
+            gestureDirection: 'horizontal',
             contentStyle: { backgroundColor: '#000000' },
-            cardStyle: { backgroundColor: '#000000' },
           }} 
         />
         <Stack.Screen 
           name="orders" 
           options={{ 
-            animation: 'none',
-            animationDuration: 0,
-            gestureEnabled: false,
+            presentation: 'modal',
+            animation: Platform.OS === 'ios' ? 'slide_from_right' : 'slide_from_bottom',
+            animationDuration: 250,
+            gestureEnabled: true,
+            gestureDirection: 'horizontal',
             contentStyle: { backgroundColor: '#000000' },
-            cardStyle: { backgroundColor: '#000000' },
           }} 
         />
         <Stack.Screen 
           name="wishlist" 
           options={{ 
-            animation: 'none',
-            animationDuration: 0,
-            gestureEnabled: false,
+            presentation: 'modal',
+            animation: Platform.OS === 'ios' ? 'slide_from_right' : 'slide_from_bottom',
+            animationDuration: 250,
+            gestureEnabled: true,
+            gestureDirection: 'horizontal',
             contentStyle: { backgroundColor: '#000000' },
-            cardStyle: { backgroundColor: '#000000' },
           }} 
         />
         <Stack.Screen 
           name="profile-edit" 
           options={{ 
-            animation: 'none',
-            animationDuration: 0,
-            gestureEnabled: false,
+            presentation: 'modal',
+            animation: Platform.OS === 'ios' ? 'slide_from_right' : 'slide_from_bottom',
+            animationDuration: 250,
+            gestureEnabled: true,
+            gestureDirection: 'horizontal',
             contentStyle: { backgroundColor: '#000000' },
-            cardStyle: { backgroundColor: '#000000' },
           }} 
         />
         <Stack.Screen 
           name="terms" 
           options={{ 
-            animation: 'none',
-            animationDuration: 0,
-            gestureEnabled: false,
+            presentation: 'modal',
+            animation: Platform.OS === 'ios' ? 'slide_from_right' : 'slide_from_bottom',
+            animationDuration: 250,
+            gestureEnabled: true,
+            gestureDirection: 'horizontal',
             contentStyle: { backgroundColor: '#000000' },
-            cardStyle: { backgroundColor: '#000000' },
           }} 
         />
         <Stack.Screen 
           name="product/[productId]" 
           options={{ 
-            animation: 'none',
-            animationDuration: 0,
-            gestureEnabled: false,
+            presentation: 'modal',
+            animation: Platform.OS === 'ios' ? 'slide_from_right' : 'slide_from_bottom',
+            animationDuration: 250,
+            gestureEnabled: true,
+            gestureDirection: 'horizontal',
             contentStyle: { backgroundColor: '#000000' },
-            cardStyle: { backgroundColor: '#000000' },
           }} 
         />
         <Stack.Screen 
           name="products/[categoryId]" 
           options={{ 
-            animation: 'none',
-            animationDuration: 0,
-            gestureEnabled: false,
+            presentation: 'modal',
+            animation: Platform.OS === 'ios' ? 'slide_from_right' : 'slide_from_bottom',
+            animationDuration: 250,
+            gestureEnabled: true,
+            gestureDirection: 'horizontal',
             contentStyle: { backgroundColor: '#000000' },
-            cardStyle: { backgroundColor: '#000000' },
           }} 
         />
       </Stack>
-      <StatusBar style="light" backgroundColor="#000000" />
+      <StatusBar style="auto" />
     </>
   );
 }
