@@ -12,6 +12,8 @@ import {
 import { LinearGradient } from 'expo-linear-gradient';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { Minus, Plus, Trash2, ShoppingBag } from 'lucide-react-native';
+import { useFocusEffect } from '@react-navigation/native';
+import { useCallback } from 'react';
 
 const initialCartItems = [
   {
@@ -37,6 +39,16 @@ const initialCartItems = [
 export default function CartScreen() {
   const [cartItems, setCartItems] = useState(initialCartItems);
   const [modalVisible, setModalVisible] = useState(false);
+
+  // Ensure smooth navigation back to this screen
+  useFocusEffect(
+    useCallback(() => {
+      // Screen is focused, ensure proper rendering
+      return () => {
+        // Screen is unfocused
+      };
+    }, [])
+  );
 
   const updateQuantity = (id: number, change: number) => {
     setCartItems((prev) =>

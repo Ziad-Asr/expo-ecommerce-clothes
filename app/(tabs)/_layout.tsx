@@ -7,6 +7,7 @@ import {
   Package,
 } from 'lucide-react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
+import { Platform } from 'react-native';
 
 export default function TabLayout() {
   const insets = useSafeAreaInsets();
@@ -14,19 +15,30 @@ export default function TabLayout() {
     <Tabs
       screenOptions={{
         headerShown: false,
+        lazy: false,
+        animationEnabled: true,
+        swipeEnabled: false,
         tabBarStyle: {
           backgroundColor: '#000000',
           borderTopColor: '#333333',
           borderTopWidth: 1,
           height: 80 + insets.bottom,
-          // paddingBottom: 20 + insets.bottom,
           paddingTop: 10,
+          elevation: 0,
+          shadowOpacity: 0,
         },
         tabBarActiveTintColor: '#FFD700',
         tabBarInactiveTintColor: '#888888',
         tabBarLabelStyle: {
           fontSize: 12,
           fontWeight: '600',
+          fontFamily: Platform.OS === 'ios' ? 'Inter-SemiBold' : 'Inter-SemiBold',
+        },
+        tabBarItemStyle: {
+          paddingVertical: 5,
+        },
+        tabBarIconStyle: {
+          marginBottom: 2,
         },
       }}
     >
@@ -35,6 +47,7 @@ export default function TabLayout() {
         options={{
           title: 'Home',
           tabBarIcon: ({ size, color }) => <Home size={size} color={color} />,
+          lazy: false,
         }}
       />
       <Tabs.Screen
@@ -44,6 +57,7 @@ export default function TabLayout() {
           tabBarIcon: ({ size, color }) => (
             <Package size={size} color={color} />
           ),
+          lazy: false,
         }}
       />
       <Tabs.Screen
@@ -51,6 +65,7 @@ export default function TabLayout() {
         options={{
           title: 'Categories',
           tabBarIcon: ({ size, color }) => <Search size={size} color={color} />,
+          lazy: false,
         }}
       />
       <Tabs.Screen
@@ -60,6 +75,7 @@ export default function TabLayout() {
           tabBarIcon: ({ size, color }) => (
             <ShoppingBag size={size} color={color} />
           ),
+          lazy: false,
         }}
       />
       <Tabs.Screen
@@ -67,6 +83,7 @@ export default function TabLayout() {
         options={{
           title: 'Profile',
           tabBarIcon: ({ size, color }) => <User size={size} color={color} />,
+          lazy: false,
         }}
       />
     </Tabs>

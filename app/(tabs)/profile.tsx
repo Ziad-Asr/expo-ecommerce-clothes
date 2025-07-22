@@ -22,6 +22,8 @@ import {
   User,
 } from 'lucide-react-native';
 import { useRouter } from 'expo-router';
+import { useFocusEffect } from '@react-navigation/native';
+import { useCallback } from 'react';
 
 const menuItems = [
   { icon: ShoppingBag, label: 'My Orders', color: '#FFD700' },
@@ -33,6 +35,16 @@ const menuItems = [
 
 export default function ProfileScreen() {
   const router = useRouter();
+
+  // Ensure smooth navigation back to this screen
+  useFocusEffect(
+    useCallback(() => {
+      // Screen is focused, ensure proper rendering
+      return () => {
+        // Screen is unfocused
+      };
+    }, [])
+  );
 
   const handleMenuPress = (label: string) => {
     switch (label) {

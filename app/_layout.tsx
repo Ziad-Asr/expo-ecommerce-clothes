@@ -40,50 +40,71 @@ export default function RootLayout() {
         <Stack.Screen 
           name="notifications" 
           options={{ 
-            presentation: 'modal',
-            animation: 'slide_from_right'
+            presentation: 'card',
+            animation: 'slide_from_right',
+            animationDuration: 300,
+            gestureEnabled: true,
+            gestureDirection: 'horizontal'
           }} 
         />
         <Stack.Screen 
           name="orders" 
           options={{ 
-            presentation: 'modal',
-            animation: 'slide_from_right'
+            presentation: 'card',
+            animation: 'slide_from_right',
+            animationDuration: 300,
+            gestureEnabled: true,
+            gestureDirection: 'horizontal'
           }} 
         />
         <Stack.Screen 
           name="wishlist" 
           options={{ 
-            presentation: 'modal',
-            animation: 'slide_from_right'
+            presentation: 'card',
+            animation: 'slide_from_right',
+            animationDuration: 300,
+            gestureEnabled: true,
+            gestureDirection: 'horizontal'
           }} 
         />
         <Stack.Screen 
           name="profile-edit" 
           options={{ 
-            presentation: 'modal',
-            animation: 'slide_from_right'
+            presentation: 'card',
+            animation: 'slide_from_right',
+            animationDuration: 300,
+            gestureEnabled: true,
+            gestureDirection: 'horizontal'
           }} 
         />
         <Stack.Screen 
           name="terms" 
           options={{ 
-            presentation: 'modal',
-            animation: 'slide_from_right'
+            presentation: 'card',
+            animation: 'slide_from_right',
+            animationDuration: 300,
+            gestureEnabled: true,
+            gestureDirection: 'horizontal'
           }} 
         />
         <Stack.Screen 
           name="product/[productId]" 
           options={{ 
-            presentation: 'modal',
-            animation: 'slide_from_right'
+            presentation: 'card',
+            animation: 'slide_from_right',
+            animationDuration: 300,
+            gestureEnabled: true,
+            gestureDirection: 'horizontal'
           }} 
         />
         <Stack.Screen 
           name="products/[categoryId]" 
           options={{ 
-            presentation: 'modal',
-            animation: 'slide_from_right'
+            presentation: 'card',
+            animation: 'slide_from_right',
+            animationDuration: 300,
+            gestureEnabled: true,
+            gestureDirection: 'horizontal'
           }} 
         />
       </Stack>

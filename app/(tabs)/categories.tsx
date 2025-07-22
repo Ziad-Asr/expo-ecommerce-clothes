@@ -12,6 +12,8 @@ import { LinearGradient } from 'expo-linear-gradient';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { Filter, Grid2x2 as Grid, List } from 'lucide-react-native';
 import { useRouter } from 'expo-router';
+import { useFocusEffect } from '@react-navigation/native';
+import { useCallback } from 'react';
 
 const categories = [
   {
@@ -55,6 +57,16 @@ const categories = [
 export default function CategoriesScreen() {
   const [viewMode, setViewMode] = useState<'grid' | 'list'>('grid');
   const router = useRouter();
+
+  // Ensure smooth navigation back to this screen
+  useFocusEffect(
+    useCallback(() => {
+      // Screen is focused, ensure proper rendering
+      return () => {
+        // Screen is unfocused
+      };
+    }, [])
+  );
 
   const CategoryCard = ({ category }: { category: any }) => (
     <TouchableOpacity

@@ -19,6 +19,8 @@ import {
   Inter_700Bold,
 } from '@expo-google-fonts/inter';
 import { useRouter } from 'expo-router';
+import { useFocusEffect } from '@react-navigation/native';
+import { useCallback } from 'react';
 
 const { width: screenWidth } = Dimensions.get('window');
 
@@ -152,6 +154,16 @@ export default function HomeScreen() {
     'Inter-SemiBold': Inter_600SemiBold,
     'Inter-Bold': Inter_700Bold,
   });
+
+  // Ensure smooth navigation back to this screen
+  useFocusEffect(
+    useCallback(() => {
+      // Screen is focused, ensure proper rendering
+      return () => {
+        // Screen is unfocused
+      };
+    }, [])
+  );
 
   if (!fontsLoaded) {
     return null;

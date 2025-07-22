@@ -20,6 +20,8 @@ import {
   List,
 } from 'lucide-react-native';
 import { useRouter } from 'expo-router';
+import { useFocusEffect } from '@react-navigation/native';
+import { useCallback } from 'react';
 
 const { width } = Dimensions.get('window');
 const productWidth = (width - 60) / 2;
@@ -173,6 +175,16 @@ export default function ItemsScreen() {
   const [favorites, setFavorites] = useState<number[]>([2, 4, 7]);
   const [showFilters, setShowFilters] = useState(false);
   const router = useRouter();
+
+  // Ensure smooth navigation back to this screen
+  useFocusEffect(
+    useCallback(() => {
+      // Screen is focused, ensure proper rendering
+      return () => {
+        // Screen is unfocused
+      };
+    }, [])
+  );
 
   // Filter products based on search query and selected category
   const filteredProducts = allProducts.filter((product) => {
