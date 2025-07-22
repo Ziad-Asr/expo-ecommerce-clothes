@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { View, StyleSheet } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 import { SafeAreaView } from 'react-native-safe-area-context';
@@ -12,42 +12,26 @@ export default function ScreenWrapper({
   children, 
   edges = ['top', 'bottom', 'left', 'right'] 
 }: ScreenWrapperProps) {
-  const [isReady, setIsReady] = useState(false);
-
-  useEffect(() => {
-    // Small delay to ensure smooth transition
-    const timer = setTimeout(() => {
-      setIsReady(true);
-    }, 50);
-
-    return () => clearTimeout(timer);
-  }, []);
-
-  if (!isReady) {
-    return (
+  return (
+    <View style={styles.container}>
       <LinearGradient
         colors={['#000000', '#1a1a1a', '#000000']}
-        style={styles.container}
+        style={styles.gradient}
       >
-        <SafeAreaView style={styles.safeArea} edges={edges} />
+        <SafeAreaView style={styles.safeArea} edges={edges}>
+          {children}
+        </SafeAreaView>
       </LinearGradient>
-    );
-  }
-
-  return (
-    <LinearGradient
-      colors={['#000000', '#1a1a1a', '#000000']}
-      style={styles.container}
-    >
-      <SafeAreaView style={styles.safeArea} edges={edges}>
-        {children}
-      </SafeAreaView>
-    </LinearGradient>
+    </View>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
+    flex: 1,
+    backgroundColor: '#000000',
+  },
+  gradient: {
     flex: 1,
   },
   safeArea: {
